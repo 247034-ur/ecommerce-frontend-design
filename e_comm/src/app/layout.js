@@ -1,5 +1,6 @@
 import './globals.css';
 import ShippingDropdown from './shippingDropdown';
+import SearchForm from './searchForm'; // Imported client-side module
 
 export default function RootLayout({ children }) {
   return (
@@ -14,21 +15,8 @@ export default function RootLayout({ children }) {
             <span className="brand-name">Brand</span>
           </div>
 
-          <div className="search-container">
-            <input type="text" placeholder="Search" className="search-input" />
-            
-            <div className="category-dropdown">
-              <select className="header-select">
-                <option value="all">All category</option>
-                <option value="automobiles">Automobiles</option>
-                <option value="clothes">Clothes and wear</option>
-                <option value="home">Home interiors</option>
-                <option value="tech">Computer and tech</option>
-              </select>
-            </div>
-            
-            <button className="search-button">Search</button>
-          </div>
+          {/* Clean, safe Client Component search block */}
+          <SearchForm />
 
           <nav className="user-nav">
             <div className="nav-item">
@@ -84,20 +72,20 @@ export default function RootLayout({ children }) {
               </select>
             </div>
             
-            {/* Keeping shipping code separate as requested */}
             <ShippingDropdown />
 
           </div>
         </nav>
 
         {/* --- 3. CORE PAGE CHANNELS HUB --- */}
-       
+        <main className="main-content-wrapper">
+          {children}
+        </main>
 
-        {/* --- 4. GLOBAL SITE FOOTER (image_023244.png) --- */}
+        {/* --- 4. GLOBAL SITE FOOTER --- */}
         <footer className="site-footer">
           <div className="footer-top">
             
-            {/* Column 1: Brand Profile & Social Circle Hub */}
             <div className="footer-col brand-col">
               <div className="footer-logo">
                 <img src="/icons/logo-symbol.svg" alt="Brand Logo" className="logo-icon" />
@@ -122,11 +110,9 @@ export default function RootLayout({ children }) {
                 <a href="#" className="social-icon" aria-label="YouTube">
                   <img src="/icons/youtube.svg" alt="" />
                 </a>
-                
               </div>
             </div>
 
-            {/* Column 2: About Links */}
             <div className="footer-col">
               <h4>About</h4>
               <ul>
@@ -137,7 +123,6 @@ export default function RootLayout({ children }) {
               </ul>
             </div>
 
-            {/* Column 3: Partnership Links */}
             <div className="footer-col">
               <h4>Partnership</h4>
               <ul>
@@ -148,7 +133,6 @@ export default function RootLayout({ children }) {
               </ul>
             </div>
 
-            {/* Column 4: Support Information */}
             <div className="footer-col">
               <h4>Information</h4>
               <ul>
@@ -159,7 +143,6 @@ export default function RootLayout({ children }) {
               </ul>
             </div>
 
-            {/* Column 5: User Tools */}
             <div className="footer-col">
               <h4>For users</h4>
               <ul>
@@ -170,7 +153,6 @@ export default function RootLayout({ children }) {
               </ul>
             </div>
 
-            {/* Column 6: Marketplace Application Store Badges */}
             <div className="footer-col app-col">
               <h4>Get app</h4>
               <div className="app-buttons">
@@ -185,7 +167,6 @@ export default function RootLayout({ children }) {
 
           </div>
 
-          {/* Bottom Copyright Status Bar Strip */}
           <div className="footer-bottom">
             <p className="copyright">© 2023 Ecommerce.</p>
             <div className="language-selector">
